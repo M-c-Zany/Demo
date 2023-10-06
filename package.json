@@ -3,7 +3,10 @@
     "cypress": "^13.3.0",
     "cypress-parallel": "^0.13.0"
   },
+  "cypress": {
+    "testFiles": "cypress/e2e/**/*.cy.js"
+  },
   "scripts": {
-    "cypress:run": "cypress run --record --parallel --ci-build-id $(date +%s) 'cypress/e2e/**/*.cy.js'"
+    "cypress:run": "cypress run --record --parallel --ci-build-id $(date +%s)"
   }
 }
