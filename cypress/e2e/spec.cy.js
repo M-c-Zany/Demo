@@ -7,5 +7,11 @@ describe('User Authentication', () => {
     it('should allow user registration', () => {
         cy.visit("www.google.com")
     });
+    it('should allow user registration', () => {
+      cy.visit("www.google.com")
+  });
+  it('should allow user registration', () => {
+    cy.visit("www.google.com")
+});
   });
   
