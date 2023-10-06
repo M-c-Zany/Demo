@@ -37,4 +37,4 @@ jobs:
         run: npm ci
 
       - name: Run Cypress Tests
-        run: npx cypress run
+        run: npx cypress run --parallel --record --key <your-record-key>
