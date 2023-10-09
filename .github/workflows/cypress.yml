@@ -14,11 +14,14 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14, 16]  # You can add more versions if needed for parallel execution
+        node-version: [14]  # Use a single version for testing first
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+
+      - name: Debug Environment Variables
+        run: env
 
       - name: Cache Cypress Binary
         uses: actions/cache@v2
@@ -33,11 +36,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install Cypress Globally
+        run: npm install -g cypress@latest
+
+      - name: Debug Installed Cypress Version
+        run: cypress --version
+
+      - name: Debug Contents of Cypress Config Files
+        run: |
+          cat cypress.json
+          cat cypress.config.js
+
       - name: Install Dependencies
         run: npm ci
 
       - name: Run Cypress Tests
-        run: npm test
+        run: cypress run --parallel --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35 --spec "cypress/e2e/**/*.cy.js"
 
       - name: Archive Test Artifacts
         uses: actions/upload-artifact@v2
