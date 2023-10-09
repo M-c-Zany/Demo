@@ -3,9 +3,6 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        parallel: [1, 2, 3, 4]  # Number of parallel jobs, adjust based on your needs
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,10 +17,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Run Cypress tests in parallel
+      # Run Cypress tests
       - name: Run Cypress tests
-        uses: cypress-io/github-action@v2
-        with:
-          record: true  # Set to false if you don't want to record the tests
-          parallel: true  # Enable parallel test runs
-          parallelism: ${{ matrix.parallel }}  # Number of parallel jobs to run
+        run: npm run cypress:run  # Assuming you have a script in your package.json to run Cypress tests
