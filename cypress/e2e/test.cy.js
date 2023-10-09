@@ -1,19 +1,19 @@
 // auth.spec.js
-const specificPageUrl = Cypress.config("baseUrl") + 'path/to/specific/page';
+const Url = Cypress.config("baseUrl");
     
 describe('User Authentication', () => {
     it('should allow user login', () => {
-      cy.visit(specificPageUrl);
+      cy.visit(Url);
     });
   
     it('should allow user registration', () => {
-      cy.visit(specificPageUrl);
+      cy.visit(Url);
     });
     it('should allow user registration', () => {
-      cy.visit(specificPageUrl);
+      cy.visit(Url);
   });
   it('should allow user registration', () => {
-    cy.visit(specificPageUrl);
+    cy.visit(Url);
 });
   });
   
