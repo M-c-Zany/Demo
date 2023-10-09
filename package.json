@@ -7,6 +7,6 @@
     "testFiles": "cypress/e2e/**/*.cy.js"
   },
   "scripts": {
-    "cypress:run": "cypress run --record --parallel --ci-build-id $(date +%s)"
+    "test": "cypress run --record --parallel --ci-build-id $(date +%s)"
   }
 }

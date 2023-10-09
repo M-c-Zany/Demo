@@ -1,25 +1,24 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-    specPattern: "cypress/e2e/**/*.cy.js", // Update specPattern here
-    baseUrl: "https://www.google.com/", // Set your baseUrl here
-  },
-  videosFolder: 'cypress/videos',
-  screenshotsFolder: 'cypress/screenshots',
-  
+  // Cypress configuration for end-to-end tests
+  testFiles: "**/*.cy.js", // Use testFiles instead of specPattern
+  baseUrl: "https://www.google.com/", // Set your baseUrl here
+  videosFolder: "cypress/videos",
+  screenshotsFolder: "cypress/screenshots",
+
   // Cypress Dashboard configuration
   projectId: "z2d7pq",
   record: true,
-  
+
   // Parallelization configuration
   numTestsKeptInMemory: 5,
   numTestsKeptInDisk: 20,
   parallel: true,
+
+  // Any additional configurations or plugins can be added here
 });
+
 
 
 
