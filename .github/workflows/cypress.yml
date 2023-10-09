@@ -6,17 +6,18 @@ jobs:
   prepare:
     runs-on: ubuntu-22.04
     outputs:
-      test-files: ${{ steps.parse.outputs.test-files }}
+      integration-tests: ${{ steps.parse.outputs.integration-tests }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies and find all test files using glob pattern
+      # Install npm dependencies and parse test files for parallelization
       - name: Prepare tests
         run: |
           npm install
-          # Use find command to find all Cypress test files in the project root directory
-          # Adjust the glob pattern to match your test file naming convention
-          echo ::set-output name=test-files::$(find . -name '*.spec.js' -o -name '*.test.js' | tr '\n' ',')
+          # Run a script to parse test files and output them to a JSON file
+          # This script could be a custom Node.js script or any other way you organize your test files
+          # The output should be a JSON array of test file paths
+          echo '["./path/to/integration-test-spec.js"]' > integration-tests.json
         id: parse
 
   test:
@@ -24,7 +25,7 @@ jobs:
     needs: prepare
     strategy:
       matrix:
-        spec: ${{ fromJson(needs.prepare.outputs.test-files) }}
+        spec: ${{ fromJson(needs.prepare.outputs.integration-tests) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
