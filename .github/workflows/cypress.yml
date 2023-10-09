@@ -17,6 +17,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Run Cypress tests
+      # Run Cypress tests in parallel using cypress-parallel
       - name: Run Cypress tests
-        run: npm run cypress:run  # Assuming you have a script in your package.json to run Cypress tests
+        run: npx cypress-parallel --record --ci-build-id $(date +%s)
