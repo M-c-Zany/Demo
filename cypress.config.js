@@ -1,14 +1,11 @@
-const { defineConfig } = require("cypress");
-
-module.exports = defineConfig({
+module.exports = {
   // Cypress configuration for end-to-end tests
   e2e: {
     specPattern: "**/*.cy.js", // Use specPattern under the e2e property
     baseUrl: "https://www.google.com/",
-
     setupNodeEvents(on, config) {
       // implement node event listeners here
-    },
+    }
   },
 
   videosFolder: "cypress/videos",
@@ -25,8 +22,8 @@ module.exports = defineConfig({
   numTestsKeptInDisk: 20,
 
   // Any additional configurations or plugins can be added here
-  parallel: true,
-});
+  parallel: true
+};
 
 
 // npx cypress run --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35
