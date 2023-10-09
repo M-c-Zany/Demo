@@ -5,18 +5,8 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      # Install npm dependencies
-      - name: Install Dependencies
-        run: npm install
-
-      # Run Cypress tests in parallel using cypress-parallel
-      - name: Run Cypress tests
-        run: npx cypress-parallel --record --ci-build-id $(date +%s)
+        uses: actions/checkout@v4
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
