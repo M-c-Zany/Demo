@@ -44,7 +44,6 @@ jobs:
 
       - name: Debug Contents of Cypress Config Files
         run: |
-          cat cypress.json
           cat cypress.config.js
 
       - name: Install Dependencies
