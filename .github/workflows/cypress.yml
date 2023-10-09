@@ -3,29 +3,18 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - main # Or your main branch name
+      - main
 
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        browser: [chrome, firefox] # You can add more browsers if needed
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run Cypress tests
-      run: |
-        npx cypress run --browser ${{ matrix.browser }} --parallel
-
-    - name: Upload test results
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: cypress/videos # Or the path where your test results are stored
+      - name: Run Cypress tests
+        run: npx cypress run --spec "cypress/e2e/*.spec.js"
