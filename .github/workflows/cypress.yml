@@ -36,5 +36,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Integration Tests
         run: npx cypress run --parallel --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35 --spec "cypress/e2e/**/*.cy.js"
+
+      - name: Run Cypress Component Tests
+        run: npx cypress run-ct
+
+      - name: Archive Test Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-artifacts
+          path: cypress/videos
