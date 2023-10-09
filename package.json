@@ -5,7 +5,10 @@
   },
   "cypress": {
     "testFiles": "cypress/e2e/**/*.cy.js",
-    "baseUrl": "https://www.google.com/"
+    "baseUrl": "https://www.google.com/",
+    "e2e": {
+      "specPattern": "**/*.cy.js"
+    }
   },
   "scripts": {
     "test": "cypress run --record --parallel --ci-build-id $(date +%s)"

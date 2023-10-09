@@ -1,36 +1,12 @@
 name: End-to-end tests
-
 on: push
-
 jobs:
-  prepare:
+  cypress-run:
     runs-on: ubuntu-22.04
-    outputs:
-      integration-tests: ${{ steps.parse.outputs.integration-tests }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies and parse test files for parallelization
-      - name: Prepare tests
-        run: |
-          npm install
-          # Run a script to parse test files and output them to a JSON file
-          # This script could be a custom Node.js script or any other way you organize your test files
-          # The output should be a JSON array of test file paths
-          echo '["./path/to/integration-test-spec.js"]' > integration-tests.json
-        id: parse
-
-  test:
-    runs-on: ubuntu-22.04
-    needs: prepare
-    strategy:
-      matrix:
-        spec: ${{ fromJson(needs.prepare.outputs.integration-tests) }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Install npm dependencies and run Cypress tests in parallel
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with:
-          spec: ${{ matrix.spec }}
