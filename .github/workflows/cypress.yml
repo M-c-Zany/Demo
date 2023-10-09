@@ -1,36 +1,31 @@
-name: Cypress Parallel Tests
+name: Cypress Tests
 
 on:
   push:
     branches:
-      - main
+      - main # Or your main branch name
 
 jobs:
-  cypress-parallel-tests:
+  cypress-tests:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
-        browser: [chrome, firefox] # Add more browsers if needed
-        
+        browser: [chrome, firefox] # You can add more browsers if needed
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    
+
     - name: Install dependencies
       run: npm install
-    
-    - name: Run Cypress Tests
-      run: npm run cy:run -- --browser ${{ matrix.browser }}
-      
-    - name: Upload Cypress Screenshots and Videos
+
+    - name: Run Cypress tests
+      run: |
+        npx cypress run --browser ${{ matrix.browser }} --parallel
+
+    - name: Upload test results
       uses: actions/upload-artifact@v2
       with:
-        name: cypress-artifacts
-        path: cypress/screenshots
-  
+        name: test-results
+        path: cypress/videos # Or the path where your test results are stored
