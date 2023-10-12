@@ -34,6 +34,6 @@ jobs:
 
       - name: Run Cypress tests
         run: |
-          npx cypress run --spec "cypress/e2e/*.spec.js"
+          npm run cypress:run -- --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35 --parallel
 
       # Optionally, you can add steps for additional tasks after running tests, such as deploying artifacts or notifications.
