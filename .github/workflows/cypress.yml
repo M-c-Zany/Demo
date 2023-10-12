@@ -13,8 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache Cypress binary and node_modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
       - name: Install dependencies
         run: npm install
+
+      - name: Install Cypress
+        run: npx cypress install
 
       - name: Run Cypress tests
         run: npx cypress run --spec "cypress/e2e/*.spec.js"
