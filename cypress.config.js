@@ -26,5 +26,6 @@ module.exports = {
 };
 
 
+
 // npx cypress run --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35
 // npm run cypress:run -- --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35 --parallel

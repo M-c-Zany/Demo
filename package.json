@@ -4,10 +4,10 @@
     "cypress-parallel": "^0.13.0"
   },
   "cypress": {
-    "testFiles": "cypress/e2e/**/*.cy.js",
+    "testFiles": "cypress/e2e/**/*.spec.js",
     "baseUrl": "https://www.google.com/",
     "e2e": {
-      "specPattern": "**/*.cy.js"
+      "specPattern": "**/*.spec.js"
     }
   },
   "scripts": {
