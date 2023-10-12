@@ -34,6 +34,6 @@ jobs:
 
       - name: Run Cypress tests
         run: |
-          npm run cypress:run -- --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35 --parallel
+          npx cypress run --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35
 
       # Optionally, you can add steps for additional tasks after running tests, such as deploying artifacts or notifications.
