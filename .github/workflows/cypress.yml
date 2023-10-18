@@ -36,5 +36,3 @@ jobs:
           # Find all spec files and run them
           spec_files=$(find cypress/e2e -name '*.spec.js' -type f -print)
           npx cypress run --record --key 67d2d553-e8df-4548-aa05-bc09aaa94c35 --spec "$spec_files"
-
-      # Optionally, you can add steps for additional tasks after running tests, such as deploying artifacts or notifications.
